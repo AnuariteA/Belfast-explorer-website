@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Event Recommendations</title>
+    <link rel="stylesheet" href="css/styles.css" />
+    <script src="https://kit.fontawesome.com/2f9c3834da.js" crossorigin="anonymous"></script>
+    <link rel="icon" href="favicon-belfast.ico?v=1" type="image/x-icon">
+<body class="home-page">
+
+<!--Header-->
+<header class="home-header">
+    <div class="welcome-text">
+        <h1>Personalised Event Suggestions</h1>
+        <p>Based on your preferences.</p>
+    </div>
+    <div>
+        <div class="header-actions">
+            <div class="notif-wrapper">
+                <i class="fa-solid fa-bell" id="notif-icon"></i>
+                <span id="notifCount" class="notif-count">0</span>
+                <div id="notifDropdown" class="notif-dropdown">
+                    <p>No new notifications</p>
+                </div>
+            </div>
+            <img src="images/Profile_avatar.png" alt="User avatar" class="avatar" />
+            <div class="avatar-dropdown" id="avatarDropdown"></div>
+        </div>
+        <div class="top-right-buttons">
+            <button onclick="location.href='all-events.html'" class="mini-nav-btn">See All Events</button>
+            <button onclick="location.href='calendar.html'" class="mini-nav-btn"><i class="fa-solid fa-calendar-days"></i> Calendar</button>
+        </div>
+    </div>
+</header>
+
+<!--Recommendations section-->
+<main class="card-list" id="recommendations">
+    <!--event cards information on script.js-->
+</main>
+
+<!--Navbar-->
+<footer class="nav-bar">
+    <button onclick="location.href='index.html'" aria-label="Home"><i class="fa-solid fa-house"></i></button>
+    <button onclick="location.href='saved-events.html'" aria-label="Favourites"><i class="fa-solid fa-heart"></i></button>
+    <button onclick="location.href='street-art-tour.html'" aria-label="Street Art Tour"><i class="fa-solid fa-palette"></i></button>
+    <button onclick="location.href='calendar.html'" aria-label="Calendar"><i class="fa-solid fa-calendar-days"></i></button>
+</footer>
+
+<script src="javascript/utils.js"></script>
+<script src="javascript/user-avatar.js"></script>
+<script src="javascript/events.js"></script>
+<script src="javascript/script.js"></script>
+</body>
+</html>

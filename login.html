@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Login</title>
+  <link rel="stylesheet" href="css/styles.css" />
+  <link rel="icon" href="favicon-belfast.ico?v=1" type="image/x-icon">
+</head>
+<body class="login-stack">
+<div class="login-wrapper">
+  <div class="login-image-top">
+    <img src="images/Belfast-login.jpg" alt="Belfast login background" />
+  </div>
+  <!--Login container-->
+  <div class="login-container">
+    <!--Header-->
+    <header>
+      <h1>Login</h1>
+      <p>Welcome to your personalised city break.</p>
+    </header>
+
+    <!--Login form-->
+    <form onsubmit="goToHomePage(); return false;">
+      <label for="email">Email</label>
+      <input type="email" id="email" placeholder="Enter your email" required />
+
+      <label for="password">Password</label>
+      <input type="password" id="password" placeholder="Enter your password" required />
+
+      <div class="options">
+        <label><input type="checkbox" /> Remember me</label>
+        <a href="#">Forgot Password?</a>
+      </div>
+
+      <button type="submit" class="btn-login">Login</button>
+      <p class="or-line">Or Sign In with</p>
+
+      <div class="social-icons">
+        <img src="images/Google_Icon.jpg" alt="Google" />
+      </div>
+    </form>
+  </div>
+</div>
+
+<script src="javascript/script.js"></script>
+</body>
+</html>

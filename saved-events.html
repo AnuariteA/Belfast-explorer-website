@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Favourites</title>
+  <link rel="stylesheet" href="css/styles.css" />
+  <script src="https://kit.fontawesome.com/2f9c3834da.js" crossorigin="anonymous"></script>
+  <link rel="icon" href="favicon-belfast.ico?v=1" type="image/x-icon">
+</head>
+<body class="home-page">
+
+<!--Header-->
+<header class="home-header">
+  <div class="welcome-text">
+    <h1>Favourites</h1>
+  </div>
+  <div>
+    <div class="header-actions">
+      <div class="notif-wrapper">
+        <i class="fa-solid fa-bell" id="notif-icon"></i>
+        <span id="notifCount" class="notif-count">0</span>
+        <div id="notifDropdown" class="notif-dropdown">
+          <p>No new notifications</p>
+        </div>
+      </div>
+      <img src="images/Profile_avatar.png" alt="User avatar" class="avatar" />
+      <div class="avatar-dropdown" id="avatarDropdown"></div>
+    </div>
+    <div class="top-right-buttons" >
+      <button onclick="location.href='calendar.html'" class="mini-nav-btn"><i class="fa-solid fa-calendar-days"></i> Calendar</button>
+    </div>
+  </div>
+</header>
+
+<main>
+  <div id="favouritesContainer" class="event-listing"></div>
+</main>
+<script src="javascript/events.js"></script>
+<script>
+  const savedEvents = JSON.parse(localStorage.getItem("savedEvents")) || [];
+  const container = document.getElementById("favouritesContainer");
+
+  if (savedEvents.length === 0) {
+    container.innerHTML = "<p>You haven’t saved any events yet.</p>";
+  } else {
+    savedEvents.forEach(saved => {
+      const event = events.find(e => e.title === saved.title);
+      if (event) {
+        const card = document.createElement("div");
+        card.className = "event-card";
+        card.innerHTML = `
+       <img src="${event.img}" alt="${event.title}" />
+       <div class="event-info">
+         <h3>${event.title}</h3>
+         <p><strong>Date:</strong> ${event.date}</p>
+         <p><strong>Location:</strong> ${event.location}</p>
+         <div class="event-actions">
+           <button class="primary" onclick="bookTicket('${event.title}')" >Book Ticket</button>
+           <button class="secondary" onclick="viewDetails('${event.title}')">View Details</button>
+           <button class="danger remove-btn">Remove</button>
+           </div>
+           </div>
+`;
+        container.appendChild(card);
+        //Remove from favorites
+        const removeBtn = card.querySelector(".remove-btn");
+        removeBtn.addEventListener("click", () => {
+          const updated = savedEvents.filter(e => e.title !== event.title);
+          localStorage.setItem("savedEvents", JSON.stringify(updated));
+          card.remove();
+          if (updated.length === 0) {
+            container.innerHTML = "<p>You haven’t saved any events yet.</p>";
+          }
+        });
+      }
+    });
+  }
+</script>
+
+<!--Navbar-->
+<footer class="nav-bar">
+  <button onclick="location.href='index.html'" aria-label="Home"><i class="fa-solid fa-house"></i></button>
+  <button onclick="location.href='saved-events.html'" aria-label="Favourites"><i class="fa-solid fa-heart"></i></button>
+  <button onclick="location.href='street-art-tour.html'" aria-label="Street Art Tour"><i class="fa-solid fa-palette"></i></button>
+  <button onclick="location.href='calendar.html'" aria-label="Calendar"><i class="fa-solid fa-calendar-days"></i></button>
+</footer>
+
+<script src="javascript/user-avatar.js"></script>
+<script src="javascript/utils.js"></script>
+<script src="javascript/script.js"></script>
+</body>
+</html>

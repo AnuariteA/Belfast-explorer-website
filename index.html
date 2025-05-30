@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Belfast Explorer</title>
+    <link rel="stylesheet" href="css/styles.css" />
+    <script src="https://kit.fontawesome.com/2f9c3834da.js" crossorigin="anonymous"></script>
+    <link rel="icon" href="favicon-belfast.ico?v=1" type="image/x-icon">
+</head>
+<body class="home-page">
+
+<!--Welcome section-->
+<header class="home-header">
+    <div class="welcome-text">
+        <h1>Welcome To Belfast Explorer!</h1>
+        <p>Discover art, history and culture in your way.</p>
+    </div>
+    <div class="header-actions">
+        <div class="notif-wrapper">
+            <i class="fa-solid fa-bell" id="notif-icon"></i>
+            <span id="notifCount" class="notif-count">0</span>
+            <div id="notifDropdown" class="notif-dropdown">
+                <p>No new notifications</p>
+            </div>
+        </div>
+        <img src="images/Profile_avatar.png" alt="User avatar" class="avatar" />
+        <span id="notifDot" class="notif-dot"></span>
+        <div class="avatar-dropdown" id="avatarDropdown"></div>
+    </div>
+</header>
+<!--Features bar-->
+<div class="feature-bar">
+    <button class="feature-btn active" data-tag="all">All</button>
+    <button class="feature-btn" data-tag="events">AI Event Recommendations</button>
+    <button class="feature-btn" data-tag="vr-walk">VR Tour</button>
+    <button class="feature-btn" data-tag="street-art">Street Art Tour</button>
+    <button class="feature-btn" data-tag="go-events">Events</button>
+</div>
+
+<!--Cards Features-->
+<main class="card-list">
+    <div class="feature-card" data-tag="events">
+        <div class="card-image-wrapper">
+            <img src="images/Event-recom.jpg" alt="Event recom" class="slide-image active" />
+            <img src="images/Event-recom2.jpg" alt="Event recom2" class="slide-image" />
+            <img src="images/Event-recom3.jpg" alt="Event recom3" class="slide-image" />
+
+            <button class="arrow-prev"><i class="fa-solid fa-chevron-left"></i></button>
+            <button class="arrow-next"><i class="fa-solid fa-chevron-right"></i></button>
+        </div>
+        <div class="card-overlay">
+            <h2>AI Event Guide</h2>
+            <p>Receive event suggestions based on your preferences.</p>
+            <button class="card-more" onclick="location.href='event-recommendations.html'">See more...</button>
+        </div>
+    </div>
+
+    <div class="feature-card" data-tag="vr-walk">
+        <div class="card-image-wrapper">
+            <img src="images/Titanic-Museum.jpg" alt="Titanic Museum" class="slide-image active" />
+            <img src="images/Titanic-Museum2.jpg" alt="Titanic Museum2" class="slide-image" />
+            <img src="images/Titanic-Museum3.jpg" alt="Titanic Museum3" class="slide-image" />
+
+            <button class="arrow-prev"><i class="fa-solid fa-chevron-left"></i></button>
+            <button class="arrow-next"><i class="fa-solid fa-chevron-right"></i></button>
+        </div>
+        <div class="card-overlay">
+            <h2>VR Titanic Walk</h2>
+            <p>Explore Belfast’s shipyard in virtual reality.</p>
+            <button class="card-more" onclick="alert('Coming soon!')">See more...</button>
+        </div>
+    </div>
+
+    <div class="feature-card" data-tag="street-art">
+        <div class="card-image-wrapper">
+            <img src="images/street-art.jpg" alt="Street Art" class="slide-image active" />
+            <img src="images/street-art2.jpg" alt="Street Art2" class="slide-image" />
+            <img src="images/street-art3.jpg" alt="Street Art3" class="slide-image" />
+            <img src="images/acrobat.jpg" alt="Street Art4" class="slide-image">
+
+            <button class="arrow-prev"><i class="fa-solid fa-chevron-left"></i></button>
+            <button class="arrow-next"><i class="fa-solid fa-chevron-right"></i></button>
+        </div>
+        <div class="card-overlay">
+            <h2>Street Art Tour</h2>
+            <p>Discover murals with an interactive digital map.</p>
+            <button class="card-more" onclick="location.href='street-art-tour.html'">See more...</button>
+        </div>
+    </div>
+</main>
+
+<!--Navbar-->
+<footer class="nav-bar">
+    <button onclick="location.href='index.html'" aria-label="Home"><i class="fa-solid fa-house"></i></button>
+    <button onclick="location.href='saved-events.html'" aria-label="Favourites"><i class="fa-solid fa-heart"></i></button>
+    <button onclick="location.href='street-art-tour.html'" aria-label="Street Art Tour"><i class="fa-solid fa-palette"></i></button>
+    <button onclick="location.href='calendar.html'" aria-label="Calendar"><i class="fa-solid fa-calendar-days"></i></button>
+</footer>
+
+
+<script src="javascript/user-avatar.js"></script>
+<script src="javascript/utils.js"></script>
+<script src="javascript/script.js"></script>
+</body>
+</html>

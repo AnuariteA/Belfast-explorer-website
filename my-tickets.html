@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Tickets</title>
+  <link rel="stylesheet" href="css/styles.css" />
+  <script src="https://kit.fontawesome.com/2f9c3834da.js" crossorigin="anonymous"></script>
+  <link rel="icon" href="favicon-belfast.ico?v=1" type="image/x-icon">
+</head>
+<body class="home-page">
+
+<header class="home-header">
+  <div class="welcome-text">
+    <h1>My Tickets</h1>
+    <p>Your booked events.</p>
+  </div>
+  <div>
+    <div class="header-actions">
+      <div class="notif-wrapper">
+        <i class="fa-solid fa-bell" id="notif-icon"></i>
+        <span id="notifCount" class="notif-count">0</span>
+        <div id="notifDropdown" class="notif-dropdown">
+          <p>No new notifications</p>
+        </div>
+      </div>
+      <img src="images/Profile_avatar.png" alt="User avatar" class="avatar" />
+      <div class="avatar-dropdown" id="avatarDropdown"></div>
+    </div>
+  </div>
+</header>
+
+<main class="card-list">
+<div id="ticketContainer" class="card-list"></div>
+  <div class="ticket-actions-bar">
+    <button onclick="clearAllTickets()" class="action-btn danger">Clear All Tickets</button>
+  </div>
+</main>
+<script>
+  const tickets = JSON.parse(localStorage.getItem("allTickets")) || [];
+  const container = document.getElementById("ticketContainer");
+  if (!tickets.length) {
+    container.innerHTML="<p>No ticket found.</p>";
+  } else {
+    tickets.forEach((ticket) => {
+      const card = document.createElement("div");
+      card.className = "mini-ticket";
+      card.innerHTML = `
+      <img src="${ticket.image}" alt="${ticket.title}" class="mini-ticket-img" />
+<div class="mini-ticket-details">
+<h4>${ticket.title}</h4>
+<p>${ticket.date}</p>
+<p>${ticket.seat}</p>
+</div>`;
+      card.addEventListener("click", () => showFullTicket(ticket));
+      container.appendChild(card);
+    });
+  }
+  function showFullTicket(ticket) {
+    const overlay = document.createElement("div");
+    overlay.className = "ticket-overlay";
+    overlay.innerHTML = `
+    <div class="ticket-card expanded">
+<button class="close-btn" onclick="this.closest('.ticket-overlay').remove()">&times;</button>
+<button onclick="deleteTicket(${ticket.ticketNum})" class="action-btn danger">
+<i class="fas fa-trash-alt"></i> Delete Ticket
+</button>
+
+<div class="event-img-wrapper">
+<img src="${ticket.image}" alt="${ticket.title}" class="ticket-event-img" />
+</div>
+<div class="ticket-body">
+<h3>${ticket.title}</h3>
+<p class="ticket-location">${ticket.location}</p>
+<div class="ticket-info">
+<div class="ticket-body-info">
+<h4>Seat</h4>
+<p>${ticket.seat}</p>
+</div>
+<div class="ticket-body-info">
+<h4>Date</h4>
+<p>${ticket.date}</p>
+</div>
+</div>
+<p class="ticket-meta"><strong>Paid via:</strong>${ticket.method}</p>
+${ticket.discount ? `<p class="ticket-meta"><strong>Discount:</strong>${ticket.discount}</p>` : ""}
+<p class="ticket-meta"><strong>Ticket #</strong>${ticket.ticketNum}</p>
+<div class="barcode"></div>
+</div>
+</div>
+`;
+    document.body.appendChild(overlay);
+  }
+  function clearAllTickets() {
+    if (confirm("Are you sure you want to delete all saved tickets?")) {
+      localStorage.removeItem("allTickets");
+      location.reload();
+    }
+  }
+  //Delete ticket
+  function deleteTicket(ticketNum) {
+    const updatedTickets = tickets.filter(t => t.ticketNum !== ticketNum);
+    localStorage.setItem("allTickets", JSON.stringify(updatedTickets));
+    document.querySelector(".ticket-overlay").remove();
+    location.reload();
+  }
+</script>
+<script src="javascript/script.js"></script>
+<script src="javascript/user-avatar.js"></script>
+
+<!--Navbar-->
+<footer class="nav-bar">
+  <button onclick="location.href='index.html'" aria-label="Home"><i class="fa-solid fa-house"></i></button>
+  <button onclick="location.href='saved-events.html'" aria-label="Favourites"><i class="fa-solid fa-heart"></i></button>
+  <button onclick="location.href='street-art-tour.html'" aria-label="Street Art Tour"><i class="fa-solid fa-palette"></i></button>
+  <button onclick="location.href='calendar.html'" aria-label="Calendar"><i class="fa-solid fa-calendar-days"></i></button>
+</footer>
+
+<script src="javascript/utils.js"></script>
+</body>
+</html>

@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Murals</title>
+    <link rel="stylesheet" href="css/styles.css" />
+    <script src="https://kit.fontawesome.com/2f9c3834da.js" crossorigin="anonymous"></script>
+    <link rel="icon" href="favicon-belfast.ico?v=1" type="image/x-icon">
+</head>
+<body class="home-page">
+
+<!--Welcome section-->
+<header class="home-header">
+    <div class="welcome-text">
+        <h1>All Murals</h1>
+        <p>Discover the stories behind Belfast's street art murals.</p>
+    </div>
+    <div class="header-actions">
+        <div class="notif-wrapper">
+            <i class="fa-solid fa-bell" id="notif-icon"></i>
+            <span id="notifCount" class="notif-count">0</span>
+            <div id="notifDropdown" class="notif-dropdown">
+                <p>No new notifications</p>
+            </div>
+        </div>
+        <img src="images/Profile_avatar.png" alt="User avatar" class="avatar" />
+        <span id="notifDot" class="notif-dot"></span>
+        <div class="avatar-dropdown" id="avatarDropdown"></div>
+    </div>
+</header>
+
+<main class="murals-grid">
+    <!--Mural cards-->
+    <div class="mural-card" onclick="openMuralDetails('protagoras')">
+        <img src="images/street-art3.jpg" alt="The Son of Protagoras">
+        <div class="mural-info">
+            <h3>The Son of Protagoras</h3>
+            <p>MTO, 2014 - 21 Talbot Street.</p>
+        </div>
+    </div>
+    <div class="mural-card" onclick="openMuralDetails('chef')">
+        <img src="images/street-art.jpg" alt="The Chef">
+        <div class="mural-info">
+            <h3>The Chef</h3>
+            <p>Smug, 2016 - High Street.</p>
+        </div>
+    </div>
+    <div class="mural-card" onclick="openMuralDetails('kitchener')">
+        <img src="images/street-art2.jpg" alt="Night Taxi">
+        <div class="mural-info">
+            <h3>Night Taxi</h3>
+            <p>Dan Kitchener - Enfield Street </p>
+        </div>
+    </div>
+    <div class="mural-card" onclick="openMuralDetails('acrobat')">
+        <img src="images/acrobat.jpg" alt="Acrobat">
+        <div class="mural-info">
+            <h3>The Acrobat</h3>
+            <p>Alice Pasquini, 2018 - 87 Donegall Street</p>
+        </div>
+    </div>
+
+    <div class="back-to-map">
+        <button onclick="location.href='street-art-tour.html'">
+            <i class="fa-solid fa-arrow-left"></i>Back to Map
+        </button>
+    </div>
+</main>
+
+<div class="mural-modal" id="muralModal">
+    <div class="modal-content">
+        <span class="close-icon" onclick="closeMuralDetails()"><i class="fa-solid fa-xmark"></i></span>
+        <h2 id="modalTitle"></h2>
+        <p id="modalContent"></p>
+    </div>
+</div>
+
+<script>
+    //Mural details
+    const muralData = {
+        protagoras: {
+            title: "The Son of Protagoras - MTO (2014)",
+            content: `This piece of art is named after the agnostic Greek philosopher ‘Protagoras’.
+            After learning about the divisions in Northern Ireland, MTO created this mural.
+            The boy represents peace, and the arrows killing the dove symbolise religious conflict.
+            Facing Belfast Cathedral, it critiques religion’s role in division.
+            The artist used his own son as the model for the boy.`
+        },
+        chef: {
+            title: "The Chef - Smug (2016)",
+            content: `This three-storey portrait of a chef holding a lobster is painted by Australian artist Smug.
+            Located on the side of the Ulster Sports Club at High Street, the mural is widely praised for its photorealistic detail and scale.`
+        },
+        kitchener: {
+            title: "Dan Kitchener - Night Taxi",
+            content: `Kitchener’s murals are inspired by Tokyo and feature intense colour and depth.
+             Dan Kitchener said: “The black taxi represents the iconic Shankill taxi that was used for 50 years in the area driving in a narrow Japanese back street and the title of the piece is ‘you can go anywhere’ to show that with hard work and determination you can visit the world!”`
+        },
+        acrobat: {
+            title: "The Acrobat - Alice Pasquini (2018)",
+            content: `This portrait commemorates Will Chamberlain, Director of Belfast Circus School, who passed away in 2018.
+            Painted during the Hit the North Festival, it symbolises his legacy in the arts and circus community.`
+        }
+    };
+    function openMuralDetails(key) {
+        const mural = muralData[key];
+        document.getElementById('modalTitle').innerText = mural.title;
+        document.getElementById('modalContent').innerText = mural.content;
+        document.getElementById('muralModal').style.display = 'block';
+        document.querySelector('.murals-grid').style.display = 'none';
+    }
+    function closeMuralDetails() {
+        document.getElementById('muralModal').style.display = 'none';
+        document.querySelector('.murals-grid').style.display = 'grid';
+    }
+</script>
+<!--Navbar-->
+<footer class="nav-bar">
+    <button onclick="location.href='index.html'" aria-label="Home"><i class="fa-solid fa-house"></i></button>
+    <button onclick="location.href='saved-events.html'" aria-label="Favourites"><i class="fa-solid fa-heart"></i></button>
+    <button onclick="location.href='street-art-tour.html'" aria-label="Street Art Tour"><i class="fa-solid fa-palette"></i></button>
+    <button onclick="location.href='calendar.html'" aria-label="Calendar"><i class="fa-solid fa-calendar-days"></i></button>
+</footer>
+
+<script src="javascript/user-avatar.js"></script>
+</body>
+</html>

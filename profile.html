@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Profile</title>
+  <link rel="stylesheet" href="css/styles.css" />
+  <script src="https://kit.fontawesome.com/2f9c3834da.js" crossorigin="anonymous"></script>
+  <link rel="icon" href="favicon-belfast.ico?v=1" type="image/x-icon">
+</head>
+<body class="profile-page">
+<!--Header-->
+<header class="profile-header">
+  <i class="fa-solid fa-arrow-left" onclick="location.href='index.html'"></i>
+  <h1 class="profile-title">Profile</h1>
+</header>
+
+<main class="profile-card">
+  <div class="profile-top">
+    <img src="images/Profile_avatar.png" alt="Profile picture" id="profilePic" />
+    <h2 id="displayNameHeader" class="profile-name">Your Name</h2>
+  </div>
+
+  <!--User information-->
+  <div class="info-container">
+  <div class="info-row"><i class="fa-solid fa-user"></i><span id="displayName">Full Name</span></div>
+  <div class="info-row"><i class="fa-solid fa-cake-candles"></i><span id="displayBirthday">Birthday</span></div>
+  <div class="info-row"><i class="fa-solid fa-phone"></i><span id="displayPhone">Phone Number</span></div>
+  <div class="info-row"><i class="fa-solid fa-envelope"></i><span id="displayEmail">Email</span></div>
+  <div class="info-row"><i class="fa-solid fa-heart"></i><span id="displayPreferences">Preferences</span></div>
+  </div>
+  <!--Edit button-->
+  <div class="button-pair">
+    <button class="edit-btn" onclick="enableEdit()">Edit Profile</button>
+    <button class="edit-btn" onclick="logout()">Logout</button>
+  </div>
+</main>
+<script>
+  function enableEdit() {
+    window.location.href = "edit-profile.html";
+  }
+</script>
+
+<script src="javascript/utils.js"></script>
+<script src="javascript/script.js"></script>
+</body>
+</html>
